@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Exceptions;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,15 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeave
             _leaveTypeRepository = leaveTypeRepository;
         }
 
-        ValueTask<Unit> IRequestHandler<UpdateLeaveTypeCommand, Unit>.Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
+        public async ValueTask<Unit> Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var leaveTypeToUpdate = _mapper.Map<HRLeaveManagement.Domain.LeaveType>(request);
+
+            // add to database
+            await _leaveTypeRepository.UpdateAsync(leaveTypeToUpdate);
+
+            // return Unit value
+            return Unit.Value;
         }
     }
 }

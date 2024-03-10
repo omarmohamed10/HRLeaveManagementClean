@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Exceptions;
+using HRLeaveManagement.Domain;
 using Mediator;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,9 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
         public async ValueTask<List<LeaveTypeDto>> Handle(GetLeaveTypeQuery request, CancellationToken cancellationToken)
         {
             var leaveTypes = await _leaveTypeRepository.GetAsync();
+
+            if (leaveTypes == null)
+                throw new NotFoundException(nameof(LeaveType), request);
 
             var leaveTypesDtos = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
 
