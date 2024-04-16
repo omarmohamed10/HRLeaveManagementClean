@@ -21,9 +21,9 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeave
                 .WithMessage("Name must be equal or fewer than 100 characters");
 
             RuleFor(x => x.DefaultDays)
-                .GreaterThan(100)
+                .LessThan(100)
                 .WithMessage("{PropertyName} cannot exceed 100")
-                .LessThan(1)
+                .GreaterThan(1)
                 .WithMessage("{PropertyName} cannot be less than 1");
 
             RuleFor(x => x)

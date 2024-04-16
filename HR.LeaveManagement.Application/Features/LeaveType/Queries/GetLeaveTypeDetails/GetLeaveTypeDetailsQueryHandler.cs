@@ -2,7 +2,7 @@
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
-using Mediator;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetLeaveType
             _mapper = mapper;
             _leaveTypeRepository = leaveTypeRepository;
         }
-        public async ValueTask<GetLeaveTypeDetailsDto> Handle(GetLeaveTypeDetailsQuery request, CancellationToken cancellationToken)
+        public async Task<GetLeaveTypeDetailsDto> Handle(GetLeaveTypeDetailsQuery request, CancellationToken cancellationToken)
         {
             var leaveType = await _leaveTypeRepository.GetByIdAsync(request.Id);
 

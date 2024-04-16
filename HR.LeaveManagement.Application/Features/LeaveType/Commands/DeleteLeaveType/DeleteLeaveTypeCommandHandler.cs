@@ -1,6 +1,6 @@
 ﻿using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.Exceptions;
-using Mediator;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.DeleteLeave
             _leaveTypeRepository = leaveTypeRepository;
         }
 
-        public async ValueTask<Unit> Handle(DeleteLeaveTypeCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteLeaveTypeCommand request, CancellationToken cancellationToken)
         {
             // retrieve domain entity object
             var leaveTypeToDelete = await _leaveTypeRepository.GetByIdAsync(request.Id);
