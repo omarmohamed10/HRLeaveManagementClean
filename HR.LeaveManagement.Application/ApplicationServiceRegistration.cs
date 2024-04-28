@@ -17,9 +17,6 @@ namespace HR.LeaveManagement.Application
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-            //services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(GetLeaveTypesQueryHandler)));
-
-
             return services;
         }
     }
