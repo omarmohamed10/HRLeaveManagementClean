@@ -12,7 +12,6 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
         public IleaveTypeService LeaveTypeService { get; set; }
         [Inject]
         public IleaveAllocationService LeaveAllocationService { get; set; }
-        [Inject]
         public List<LeaveTypeVM> LeaveTypes { get; private set; }
         public string Message { get; set; } = string.Empty;
 
