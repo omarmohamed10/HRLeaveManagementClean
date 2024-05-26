@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using HR.LeaveManagement.BlazorUI.Contracts;
-using HR.LeaveManagement.BlazorUI.Models;
+using HR.LeaveManagement.BlazorUI.Models.LeaveTypes;
 using HR.LeaveManagement.BlazorUI.Services.Base;
 
 namespace HR.LeaveManagement.BlazorUI.Services

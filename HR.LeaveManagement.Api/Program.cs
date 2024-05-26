@@ -24,6 +24,9 @@ builder.Services.AddCors(options =>
                                                 .AllowAnyMethod());
 });
 
+builder.Services.AddHttpContextAccessor();
+
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
@@ -38,6 +41,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("all");
 app.UseAuthorization();
 
 app.MapControllers();

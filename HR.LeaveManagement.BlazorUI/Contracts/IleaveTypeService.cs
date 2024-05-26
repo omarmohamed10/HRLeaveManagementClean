@@ -1,5 +1,4 @@
-﻿using HR.LeaveManagement.BlazorUI.Models;
-using HR.LeaveManagement.BlazorUI.Services.Base;
+﻿using HR.LeaveManagement.BlazorUI.Models.LeaveTypes;
 
 namespace HR.LeaveManagement.BlazorUI.Contracts
 {
